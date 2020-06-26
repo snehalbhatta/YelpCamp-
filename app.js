@@ -15,10 +15,11 @@ var express     = require("express"),
 var commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
     indexRoutes      = require("./routes/index")
-    
+
+//THE LOCAL LINK   
 // mongoose.connect("mongodb://localhost:27017/yelp_camp_v12",{useNewUrlParser:true});
 
-mongoose.connect('mongodb+srv://snehalbhatta:stupwdS9024@cluster0-13e35.mongodb.net/yelp_camp?retryWrites=true&w=majority', {
+mongoose.connect(process.env.DATABASEURL, {
 	useNewUrlParser: true,
 	useCreateIndex: true
 }).then(() => {
@@ -26,8 +27,8 @@ mongoose.connect('mongodb+srv://snehalbhatta:stupwdS9024@cluster0-13e35.mongodb.
 }).catch(err => {
 	console.log('ERROR:', err.message);
 });
-
-
+//THE CLUSTER LINK
+// mongodb+srv://snehalbhatta:stupwdS9024@cluster0-13e35.mongodb.net/yelp_camp?retryWrites=true&w=majority
 
 app.use(bodyParser.urlencoded({extended: true}));
 // app.set("view engine", "ejs");
